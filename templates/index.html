@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Meme Generator</h1>
+            <p>Unleash Your Creativity & Share the Laughter</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="main-container">
+            <!-- Left Section: Input -->
+            <section class="input-section">
+                <h2>Design Your Meme</h2>
+                <p>Enter your witty or hilarious context to create a meme.</p>
+                <form method="POST">
+                    <textarea name="context" placeholder="Type something funny here..." required>{{ context or '' }}</textarea>
+                    <label for="humor_style">Select Humor Style:</label>
+                    <select name="humor_style" id="humor_style" required>
+                        <option value="Witty" {% if humor_style == 'Witty' %}selected{% endif %}>Witty</option>
+                        <option value="Sarcastic" {% if humor_style == 'Sarcastic' %}selected{% endif %}>Sarcastic</option>
+                        <option value="Pun-based" {% if humor_style == 'Pun-based' %}selected{% endif %}>Pun-based</option>
+                        <option value="Dark Humor" {% if humor_style == 'Dark Humor' %}selected{% endif %}>Dark Humor</option>
+                        <option value="Dad Jokes" {% if humor_style == 'Dad Jokes' %}selected{% endif %}>Dad Jokes</option>
+                        <option value="Absurd" {% if humor_style == 'Absurd' %}selected{% endif %}>Absurd</option>
+                        <option value="Dry Humor" {% if humor_style == 'Dry Humor' %}selected{% endif %}>Dry Humor</option>
+                        <option value="Self-deprecating" {% if humor_style == 'Self-deprecating' %}selected{% endif %}>Self-deprecating</option>
+                        <option value="Slapstick" {% if humor_style == 'Slapstick' %}selected{% endif %}>Slapstick</option>
+                        <option value="Cringe-worthy" {% if humor_style == 'Cringe-worthy' %}selected{% endif %}>Cringe-worthy</option>
+                        <option value="Playful" {% if humor_style == 'Playful' %}selected{% endif %}>Playful</option>
+                        <option value="Intellectual" {% if humor_style == 'Intellectual' %}selected{% endif %}>Intellectual</option>
+                        <option value="Meta" {% if humor_style == 'Meta' %}selected{% endif %}>Meta</option>
+                        <option value="Surreal" {% if humor_style == 'Surreal' %}selected{% endif %}>Surreal</option>
+                        <option value="Mocking" {% if humor_style == 'Mocking' %}selected{% endif %}>Mocking</option>
+                        <option value="Nerdy/Geeky" {% if humor_style == 'Nerdy/Geeky' %}selected{% endif %}>Nerdy/Geeky</option>
+                        <option value="Observational" {% if humor_style == 'Observational' %}selected{% endif %}>Observational</option>
+                        <option value="Parody" {% if humor_style == 'Parody' %}selected{% endif %}>Parody</option>
+                        <option value="Satire" {% if humor_style == 'Satire' %}selected{% endif %}>Satire</option>
+                        <option value="Hyperbole" {% if humor_style == 'Hyperbole' %}selected{% endif %}>Hyperbole</option>
+                    </select>
+                    <button type="submit">Generate Meme</button>
+                </form>
+            </section>
+
+            <!-- Right Section: Output -->
+            <section class="output-section">
+                <h2>Your Meme</h2>
+                <p>Preview the meme you just created!</p>
+                {% if meme_path %}
+                <div class="meme-card">
+                    <img src="{{ meme_path }}" alt="Generated Meme">
+                </div>
+                {% else %}
+                <div class="placeholder">
+                    <p>Your meme will appear here once generated.</p>
+                </div>
+                {% endif %}
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Meme Generator | Bringing joy one meme at a time.</p>
+        </div>
+    </footer>
+</body>
+</html>
